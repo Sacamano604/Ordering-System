@@ -33,7 +33,7 @@
         <li><a href="../inc/logout.php">Logout</a></li>
       </ul>
   </div>
- 
+
 
 
 
@@ -65,11 +65,13 @@ $privileges = $_POST['privileges'];
 include('../inc/validate.php');
 if ($validate == "pass") {
 // UPDATE client based on the clientid
-$sql = "UPDATE clients SET first='$first', last='$last', company='$company', jobtitle='$jobtitle', street='$street', city='$city', province='$province', country='$country', postal='$postal', phone='$phone', fax='$fax', mobile='$mobile', website='$website', email='$email', password=PASSWORD('$password'), confirmpassword=PASSWORD('$confirmpassword'), privileges='$privileges' WHERE clientid='$clientid'";
+$sql = "UPDATE clients SET first='$first', last='$last', company='$company', jobtitle='$jobtitle', street='$street', city='$city', province='$province', country='$country', postal='$postal', phone='$phone', fax='$fax', mobile='$mobile', website='$website', email='$email', password=PASSWORD('$password'), confirmpassword='$confirmpassword', privileges='$privileges' WHERE clientid='$clientid'";
 $result = mysql_query($sql);
 ?>
 
 <h3>Thank you. Client: <?php echo $first; ?> <?php echo $last; ?> has been edited.</h3>
+<!-- Using the bootsrap form sytle here purely for the layout. -->
+<form class="form-inline">
 <table class="table">
   <tr>
     <td><strong>First Name: </strong></td>
@@ -126,6 +128,7 @@ $result = mysql_query($sql);
     <td><?php echo $confirmpassword; ?></td>
   </tr>
 </table>
+</form>
 <?php } ?>
 <?php } else { ?>
 <?php
@@ -165,7 +168,7 @@ $privileges_other = "Admin";
   <h3>Edit client: <?php echo $first; ?> <?php echo $last; ?></h3>
   <p>Feel free to edit any existing client, just make sure to hit save when done.</p>
 </div>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-inline">
 <input name="clientid" type="hidden" value="<?php echo $clientid; ?>" />
 <table class="table">
     <tr>

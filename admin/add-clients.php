@@ -61,7 +61,7 @@ include('../inc/validate.php');
 
 if ($validate == "pass") {
 
-$sql = "INSERT INTO clients (first, last, company, jobtitle, street, city, province, country, postal, phone, fax, mobile, website, email, password, confirmpassword, privileges) VALUES ('$first', '$last', '$company', '$jobtitle', '$street','$city','$province','$country','$postal','$phone','$fax', '$mobile', '$website', '$email', PASSWORD('$password'), PASSWORD('$confirmpassword'), '$privileges')";
+$sql = "INSERT INTO clients (first, last, company, jobtitle, street, city, province, country, postal, phone, fax, mobile, website, email, password, confirmpassword, privileges) VALUES ('$first', '$last', '$company', '$jobtitle', '$street','$city','$province','$country','$postal','$phone','$fax', '$mobile', '$website', '$email', PASSWORD('$password'), '$confirmpassword', '$privileges')";
 $result = mysql_query($sql);
 
 ?>
