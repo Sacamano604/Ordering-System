@@ -88,7 +88,7 @@ while ($row = mysql_fetch_array($result)) //While there is still data in the arr
   $website = $row["website"];
   $email = $row["email"];
   $password = $row["password"];
-  $passwordconfirm = $row["passwordconfirm"];
+  $confirmpassword = $row["confirmpassword"];
   $privileges = $row["privileges"];
 ?>
     <tr>
@@ -101,43 +101,6 @@ while ($row = mysql_fetch_array($result)) //While there is still data in the arr
     </tr>
     <?php } ?>
   </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plug</a>ins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
