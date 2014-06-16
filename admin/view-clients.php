@@ -57,7 +57,7 @@ if ($sort == "ASC") {
       <th><strong><a href="<?php echo $_SERVER['PHP_SELF']; ?>?column=last&amp;sort=<?php echo $sort; ?>">Last Name</a></strong></th>
       <th><strong><a href="<?php echo $_SERVER['PHP_SELF']; ?>?column=email&amp;sort=<?php echo $sort; ?>">Email</a></strong></th>
       <th><strong><a href="<?php echo $_SERVER['PHP_SELF']; ?>?column=privileges&amp;sort=<?php echo $sort; ?>">Privilege</a></strong></th>
-      <th><strong>Modify</strong></td>
+      <th><strong>Admin Options</strong></td>
     </tr>
 </thead>    
     <?php

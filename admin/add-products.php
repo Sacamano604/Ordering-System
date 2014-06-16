@@ -74,6 +74,7 @@ if (isset($_POST['add'])) { // if the POSTED VALUE of the name ADD "is set" then
   $result = mysql_query($sql);
 ?>
 <h3>Thank you! Product added...</h3>
+<p><a href="add-products.php">< add another product</a></p>
 <table class="table">
   <tr>
     <td><strong>Title: </strong></td>
@@ -123,7 +124,7 @@ $dateModified = date('Y-m-d');
       <td><select name="category" id="category" class="form-control">
           <option value="-" selected="selected">Please choose one...</option>
           <option value="red">Red Berry</option>
-          <option value="white">White Better</option>
+          <option value="white">White Berry</option>
           <option value="blue">Blue Berry</option>
           <option value="misc">Miscellaneous Berry</option>
     </select>
