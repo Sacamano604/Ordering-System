@@ -1,4 +1,7 @@
-<?php include('inc/dbconnect.php') ?>
+<?php 
+  include('inc/dbconnect.php');
+  include('inc/client-session.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,8 +21,20 @@
 <body>
 <div class="container">
   <div class="page-header">
+    <div id="clientMenu" style="float: right;">
+      <?php include('inc/client-menu.php'); ?>
+    </div>
     <h2 style="color: #BD0000;">The Berry Emporium</h2>
   </div>
+
+
+
+
+
+
+
+
+
 
 
 </div>
