@@ -33,14 +33,6 @@
         <li><a href="../inc/logout.php">Logout</a></li>
       </ul>
   </div>
-
-
-
-
-
-
-
-
 <?php 
 if (isset($_POST['update'])) { // if the POSTED VALUE of the name INVALID "is set" then...
 $clientid = $_POST['clientid'];
@@ -233,32 +225,6 @@ $privileges_other = "Admin";
   <button type="reset" class="btn btn-danger" name="Reset" value="Reset">Reset</button>   
 </form>
 <?php } ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plug</a>ins) -->

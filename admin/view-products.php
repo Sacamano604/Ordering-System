@@ -94,7 +94,7 @@ while ($row = mysql_fetch_array($result)) //While there is still data in the arr
       <td><?php echo $title; ?></td>
       <td><?php echo $description; ?></td>
       <td><?php echo $price; ?></td>
-      <td><a href="product-details.php?id=<?php echo $productid; ?>" title="Product Details"><img src="../products/small/<?php echo $photo; ?>" title="<?php echo $title; ?>" /></a></td>
+      <td><img src="../products/small/<?php echo $photo; ?>" title="<?php echo $title; ?>" /></td>
       <td><a href="update-products.php?productid=<?php echo $productid; ?>">Edit</a> | <a href="view-products.php?delete=<?php echo $productid; ?>" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
     </tr>
     <?php } ?>
