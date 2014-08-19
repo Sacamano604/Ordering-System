@@ -28,27 +28,40 @@
   </div>
 <?php 
   if (isset($_POST['add'])) { // if the POSTED VALUE of the name ADD "is set" then...
-  $first = $_POST['first'];
-  $last = $_POST['last'];
-  $company = $_POST['company'];
-  $jobtitle = $_POST['jobtitle'];
-  $street = $_POST['street'];
-  $city = $_POST['city'];
-  $province = $_POST['province'];
-  $country = $_POST['country'];
-  $postal = $_POST['postal'];
-  $phone = $_POST['phone'];
-  $fax = $_POST['fax'];
-  $mobile = $_POST['mobile'];
-  $website = $_POST['website'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $confirmpassword = $_POST['confirmpassword'];
+      $first = $_POST['first'];
+      $last = $_POST['last'];
+      $company = $_POST['company'];
+      $jobtitle = $_POST['jobtitle'];
+      $street = $_POST['street'];
+      $city = $_POST['city'];
+      $province = $_POST['province'];
+      $country = $_POST['country'];
+      $postal = $_POST['postal'];
+      $phone = $_POST['phone'];
+      $fax = $_POST['fax'];
+      $mobile = $_POST['mobile'];
+      $website = $_POST['website'];
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+      $confirmpassword = $_POST['confirmpassword'];
+      $privileges = $_POST['privileges'];
+     
+      $query = $mysqli->prepare('INSERT INTO clients (first, last, company, jobtitle, street, city, province, country, postal, phone, fax, mobile, website, email, password, confirmpassword, privileges) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+      $query->bind_param('sssssssssssssssss', $_POST['first'], $_POST['last'], $_POST['company'], $_POST['jobtitle'], $_POST['street'], $_POST['city'], $_POST['province'], $_POST['country'], $_POST['postal'],  $_POST['phone'], $_POST['fax'], $_POST['mobile'], $_POST['website'], $_POST['email'], $_POST['password'], $_POST['confirmpassword'], $_POST['privileges']);
+      $query->execute();
+      $mysqli->close();
+
+
+
+
+
+
   
-  include('inc/validate.php');
-  if ($validate == "pass") {
-  $sql = "INSERT INTO clients (first, last, company, jobtitle, street, city, province, country, postal, phone, fax, mobile, website, email, password, confirmpassword) VALUES ('$first', '$last', '$company', '$jobtitle', '$street','$city','$province','$country','$postal','$phone','$fax', '$mobile', '$website', '$email', PASSWORD('$password'), '$confirmpassword')";
-  $result = mysql_query($sql);
+  
+  // include('inc/validate.php');
+  // if ($validate == "pass") {
+  // $sql = "INSERT INTO clients (first, last, company, jobtitle, street, city, province, country, postal, phone, fax, mobile, website, email, password, confirmpassword) VALUES ('$first', '$last', '$company', '$jobtitle', '$street','$city','$province','$country','$postal','$phone','$fax', '$mobile', '$website', '$email', PASSWORD('$password'), '$confirmpassword')";
+  // $result = mysql_query($sql);
 ?>
   <h3>Thank you for Registering <?php echo $first; ?> <?php echo $last; ?></h3>
   <p>Feel free to <a href="products.php">start shopping</a></p>
@@ -102,7 +115,6 @@
     <td><?php echo $confirmpassword; ?></td>
   </tr>
 </table>
-<?php } ?>
 <?php } else { ?>
 <h3>Register</h3>
 <p>Please fill in all the information below to register your account with The Berry Emporium. <br /><em>* = Mandatory</em></p>
@@ -155,6 +167,12 @@
     <td><input name="password" type="password" class="form-control" id="password" value="" maxlength="128" /> * </td>
     <td><strong>Confirm Password:</strong></td>
     <td><input name="confirmpassword" type="password" class="form-control" id="confirmpassword" value="" maxlength="128" /> * </td>
+  </tr>
+  <tr>
+    <td><input name="privileges" type="hidden" value="Customer" /></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
   <button type="submit" class="btn btn-success" name="add" id="add" value="add">Register</button>
