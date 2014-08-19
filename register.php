@@ -28,6 +28,7 @@
   </div>
 <?php 
   if (isset($_POST['add'])) { // if the POSTED VALUE of the name ADD "is set" then...
+    //Grab the posted values and insert them into variables.
     $first = $_POST['first'];
     $last = $_POST['last'];
     $company = $_POST['company'];
@@ -45,15 +46,16 @@
     $password = $_POST['password'];
     $confirmpassword = $_POST['confirmpassword'];
     $privileges = $_POST['privileges'];
-
+    //Validate the input
     include('inc/validate.php');
-
+    //If the input passes validation then perform the following mySQLi query
     if ($validate == "pass"){
       $query = $mysqli->prepare('INSERT INTO clients (first, last, company, jobtitle, street, city, province, country, postal, phone, fax, mobile, website, email, password, confirmpassword, privileges) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
       $query->bind_param('sssssssssssssssss', $_POST['first'], $_POST['last'], $_POST['company'], $_POST['jobtitle'], $_POST['street'], $_POST['city'], $_POST['province'], $_POST['country'], $_POST['postal'],  $_POST['phone'], $_POST['fax'], $_POST['mobile'], $_POST['website'], $_POST['email'], $_POST['password'], $_POST['confirmpassword'], $_POST['privileges']);
       $query->execute();
       $mysqli->close();
 ?>
+  <!-- Echo the results of the input once successful -->
   <h3>Thank you for Registering <?php echo $first; ?> <?php echo $last; ?></h3>
   <p>Feel free to <a href="products.php">start shopping</a></p>
 <table class="table">
