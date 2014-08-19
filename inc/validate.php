@@ -2,10 +2,19 @@
 $validate = "pass"; // Validation passes unless fails below
 
 // Check for dupliate emails!!
-if (!isset($_POST['update'])) {
-	$result = mysql_query("SELECT email FROM clients WHERE email='$email'");
-	$row = mysql_fetch_array($result);
-	$taken = $row["email"];
+if (!isset($_POST['add'])) {
+	$query = $mysqli->prepare('SELECT email FROM clients WHERE email = ?');
+	$query->bind_param('s', $email); 
+	$query->execute();
+	$result = $query->get_result();
+
+while($row = $query -> fetch_assoc()){
+	$taken = $row['email'];
+}
+
+
+
+
 	
 	if ($email === $taken) {
 		$validate = "fail";
