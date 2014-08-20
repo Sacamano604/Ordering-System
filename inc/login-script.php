@@ -1,29 +1,23 @@
 <?php
 // connect to database
-$hostname = "localhost";
-$user = "root";
-$pass = "root";
-$database = "bensberries";
+include('../inc/dbconnect.php');
 
-mysql_connect("$hostname", "$user", "$pass") or die(mysql_error());
-mysql_select_db("$database") or die(mysql_error());
-print_r($database);
-// email and password sent from signup form 
 $email = $_GET['email']; 
 $password = $_GET['password'];
 
-
-//Query MySQL database and put data into variable
-$result = mysql_query("SELECT * FROM clients WHERE email='$email' AND password='$password'");
+$query = $mysqli->prepare('SELECT * FROM clients WHERE email = ? AND password = ?');
+$query->bind_param('ss', $email, $password);
+$query->execute();
+$result = $query->get_result();
 
 //Put results into a row
-$row = mysql_fetch_array($result);
-
+//$row = mysql_fetch_array($result);
+$row = $result->fetch_array();
 //Get value of privileges (OPTIONAL)
 $privileges = $row['privileges'];
 
 // Mysql_num_row is counting table row
-$num_rows = mysql_num_rows($result);
+$num_rows = $result->num_rows;
 
 // If result matched $email and $passwd, table row must be 1 row
 if($num_rows==1) {

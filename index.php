@@ -27,7 +27,8 @@
     <h2 style="color: #BD0000;">The Berry Emporium</h2>
   </div>
 
-<p>Home page placeholder. Will be filled when the functionality is there...</p>
+<h3>Welcome to Ben's Berry Emporium.</h3>
+<h4>Please login or register to view and order products</h4>
 
 
 
