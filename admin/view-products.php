@@ -70,14 +70,25 @@ if (!isset($_GET['column']) && !isset($_GET['sort'])) {
   }
 
 
-if (isset($_GET['cat'])) { 
-  $cat = $_GET['cat'];
-  $result = mysql_query("SELECT * FROM products WHERE category = '$cat' ORDER BY $column $sort");//Query DATABASE
+if (isset($_GET['category'])) { 
+  $cat = $_GET['category'];
+  $query = $mysqli->prepare('SELECT * FROM products WHERE category = ? ORDER BY ? ?');
+  $query->bind_param('sss', $cat, $column, $sort);
+  $query->execute();
+  $result = $query->get_result();
+  //$result = mysql_query("SELECT * FROM products WHERE category = '$cat' ORDER BY $column $sort");//Query DATABASE
 } else { 
-  $result = mysql_query("SELECT * FROM products ORDER BY $column $sort");//Query DATABASE
+  $query = $mysqli->prepare("SELECT * FROM products ORDER BY $column $sort");
+ // $query->bind_param('ss', $column, $sort);
+  $query->execute();
+  $result = $query->get_result();
+
+
+
+  //$result = mysql_query("SELECT * FROM products ORDER BY $column $sort");//Query DATABASE
 }
 //Fetch Array from DATABASE
-while ($row = mysql_fetch_array($result)) //While there is still data in the array, keep going...
+while ($row = $result->fetch_array()) //While there is still data in the array, keep going...
 {
   $productid = $row["productid"];
   $category = $row["category"];
