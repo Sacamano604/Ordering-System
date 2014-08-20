@@ -18,7 +18,6 @@
   <![endif]-->
 </head> 
 <body>
-
 <div class="container">
   <div class="page-header">
     <div id="clientMenu" style="float: right;">
@@ -27,13 +26,12 @@
     <h2 style="color: #BD0000;">Login</h2>
   </div>
 
-    <?php 
-if (isset($_GET['invalid'])) { // if the POSTED VALUE of the name INVALID "is set" then...$
-?>
+<?php 
+//If the posted value from the login script is set to invalid, then display the following error message:
+if (isset($_GET['invalid'])) { ?>
 <p><strong>ERROR! Your email or passward is invalid. Please try again.</strong></p>
- <?php } ?>
-
-
+<?php } ?>
+<!-- Login form -->
  <form class="form-horizontal" role="form" action="inc/login-script.php">
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
@@ -62,15 +60,6 @@ if (isset($_GET['invalid'])) { // if the POSTED VALUE of the name INVALID "is se
     </div>
   </div>
 </form>
-
-
-
-
-
-
-
-
-
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plug</a>ins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

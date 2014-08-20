@@ -27,7 +27,8 @@
     <h2 style="color: #BD0000;">The Berry Emporium</h2>
   </div>
 <?php 
-  if (isset($_POST['add'])) { // if the POSTED VALUE of the name ADD "is set" then...
+// if the POSTED VALUE of the name ADD "is set" then...
+  if (isset($_POST['add'])) { 
     //Grab the posted values and insert them into variables.
     $first = $_POST['first'];
     $last = $_POST['last'];
