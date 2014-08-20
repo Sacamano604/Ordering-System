@@ -51,7 +51,7 @@
     //If the input passes validation then perform the following mySQLi query
     if ($validate == "pass"){
       $query = $mysqli->prepare('INSERT INTO clients (first, last, company, jobtitle, street, city, province, country, postal, phone, fax, mobile, website, email, password, confirmpassword, privileges) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-      $query->bind_param('sssssssssssssssss', $_POST['first'], $_POST['last'], $_POST['company'], $_POST['jobtitle'], $_POST['street'], $_POST['city'], $_POST['province'], $_POST['country'], $_POST['postal'],  $_POST['phone'], $_POST['fax'], $_POST['mobile'], $_POST['website'], $_POST['email'], $_POST['password'], $_POST['confirmpassword'], $_POST['privileges']);
+      $query->bind_param('sssssssssssssssss', $first, $last, $company, $jobtitle, $street, $city, $province, $country, $postal, $phone, $fax, $mobile, $website, $email, $password, $confirmpassword, $privileges);
       $query->execute();
       $mysqli->close();
 ?>
