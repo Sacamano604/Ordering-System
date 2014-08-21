@@ -1,4 +1,7 @@
-<?php include('../inc/dbconnect.php') ?>
+<?php 
+  include('../inc/dbconnect.php');
+  include('admin-session.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,8 +73,22 @@ if (isset($_POST['add'])) { // if the POSTED VALUE of the name ADD "is set" then
   $dateModified = $_POST['dateModified'];
   $category = $_POST['category'];
 
-  $sql = "INSERT INTO products (title, description, price, photo, dateAdded, dateModified, category) VALUES ('$title', '$description', '$price', '$photo', '$dateAdded','$dateModified', '$category')";
-  $result = mysql_query($sql);
+
+  $query = $mysqli->prepare('INSERT INTO products (title, description, price, photo, dateAdded, dateModified, category) VALUES (?, ?, ?, ?, ?, ?, ?)');
+  $query->bind_param('sssssss', $title, $description, $price, $photo, $dateAdded, $dateModified, $category);
+  $query->execute();
+  $result = $query->get_result();
+
+  // $sql = "INSERT INTO products (title, description, price, photo, dateAdded, dateModified, category) VALUES ('$title', '$description', '$price', '$photo', '$dateAdded','$dateModified', '$category')";
+  // $result = mysql_query($sql);
+
+
+
+
+
+
+
+
 ?>
 <h3>Thank you! Product added...</h3>
 <p><a href="add-products.php">< add another product</a></p>

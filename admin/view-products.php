@@ -1,4 +1,7 @@
-<?php include('../inc/dbconnect.php') ?>
+<?php 
+  include('../inc/dbconnect.php');
+  include('admin-session.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +68,10 @@ if (!isset($_GET['column']) && !isset($_GET['sort'])) {
     <?php
   if (isset($_GET['delete'])) { // if the POSTED VALUE of the name DELETE "is set" then...
   $delete = $_GET['delete'];
-  mysql_query("DELETE FROM products WHERE productid='$delete'");
+  $query = $mysqli->prepare('DELETE FROM products WHERE productid = ?');
+  $query->bind_param('i', $delete);
+  $query->execute();
+//  mysql_query("DELETE FROM products WHERE productid='$delete'");
   echo "<h3>Thank-you, Product ID# $delete has been deleted</h3>";
   }
 

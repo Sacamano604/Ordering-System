@@ -1,4 +1,7 @@
-<?php include('../inc/dbconnect.php') ?>
+<?php 
+  include('../inc/dbconnect.php');
+  include('admin-session.php');
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,7 +113,7 @@ if (isset($_GET['delete'])) {
   chdir("../products");
   unlink("small/".$delete);
   unlink("large/".$delete);
-  chdir("../admin-cms");
+  chdir("../admin");
   // UPDATE client based on the productid
   $sql = "UPDATE products SET photo='' WHERE productid='$productid'";
   $result = mysql_query($sql);
